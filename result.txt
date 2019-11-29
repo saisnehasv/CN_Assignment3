@@ -1,0 +1,68 @@
+Group Details:
+Name: Roopashree N
+USN: 1KS17CS064
+Name: Sai Sneha S V
+USN: 1KS17CS070
+
+GitHub Repository Link: https://github.com/saisnehasv/CN_Assignment3
+
+Question: B sends ping request (default of 1 request per second) for 1 minute, takes a break for 30 seconds and again sends ping request for 1 minute (default of 1 request per second) to A. B implements rate limit using action "-j ACCEPT" for A only and drops echo request as per X andY. No echo reply should be dropped. From B send ping packet to some other machine (e.g.google) for 1 minute, no packets should be dropped. Implement the rate limit and explain the behaviour.
+
+Solution :
+
+> The two machines chosen by our team was :
+      --Machine A: Windows OS (host)
+      --Machine B:Linux OS (VM) 
+
+> Computation of X and Y
+    --Smallest usn in the team : 1KS17CS064
+    --Last digit : D = 4
+    --Average packets per minute : X = D+10 = 14
+    --Burst rate : Y = X/2 = 14/2 = 7
+
+>This assignment deals with the implementation of end to end QoS support.QoS is used to manage data traffic to reduce packet loss, latency and jitter on the network.
+
+Justification of Implementation: 
+   We used the command:: "sudo iptables -A INPUT -m limit --limit 14/minute --limit-burst 7" to try and send 14 packets in average with a burst rate of 7 packets.This command ran succesfully leading to the implication that the rule was set. However we faced a few challenges in trying to send ping messages from the linux OS to windows OS and we werent able to to verify whether the rule was working.
+  We also used the command: "ping -w google" to send a ping to google for one minute ,with the default rate of one packet per second and we were succesfully able to do so.
+
+
+Challenges Faced:
+1.We used various commands (included in the challenges faced snapshot) to try and send a ping message to the windows server , but we were unable to resolve it.
+ 2.As we couldnt successfully send a ping message from one machine to another , we couldnt get a tcpdump from wireshark to  verify the rules.
+3.Due to the limited time constraint, and various internals and externals around the corner we were not able to conduct a thorough reasearch about the assignment statement and the challenges we faced as much as we would have liked to. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
